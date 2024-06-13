@@ -1,0 +1,51 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        dictbracket = {
+            "(": ")",
+            "[": "]",
+            "{": "}",
+            "}": "a",
+            "]": "a",
+            ")": "a"
+        }
+        opening_list = ["(", "[", "{"]
+        s = list(s)
+        w = -1
+        length = len(s)/2
+        if length % 1 == 0.5:
+            return False
+        else:
+            for x in range (int(length*2)):
+                w += 1
+                if s[w] in opening_list:
+                    value = s[w]
+                    for z in range (w+1):
+                        if s[z] not in opening_list: 
+                            s.insert(z, value)
+                            break
+                        elif z == w:
+                            s.insert(w, value)
+                        else: 
+                            pass
+                    s.pop(w+1)
+
+                    
+                else: 
+                    true = 0
+                
+                    if w == 0: 
+                        return False
+                    elif s[w] == dictbracket[s[w-1]]:
+                        true = 1
+                        s.pop(w-1)
+                        s.pop(w-1)
+                        w -= 2
+                    else: 
+                        return False
+            if not s:
+                return True
+            else:
+                return False
+            
+
+    
