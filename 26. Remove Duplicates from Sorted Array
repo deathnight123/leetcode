@@ -1,0 +1,27 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        y = 1
+        for x in range (len(nums)-1):
+            if nums[y-1] == nums[y]:
+                nums.pop(y)
+                y -= 1
+            else:
+                a
+            y += 1
+        k = len(nums)
+        return k
+SLOW !!!!!!!!!!!
+____________________________________________________________________________________________
+
+Better solution:
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        y = 1
+        for x in range (len(nums)-1):
+            if nums[x] < nums[x+1]:
+                nums[y] = nums[x+1]
+                y +=1
+        return y
+
+        
